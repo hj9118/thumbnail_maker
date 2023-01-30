@@ -10,13 +10,11 @@ const Result = () => {
   const { title, content, author } = text;
   const [color, setColor] = useState('#ffffff');
 
-  useEffect(() => {
-    
-  })
+  useEffect(() => {});
 
   const clear = (e) => {
     const { name } = e.target;
-    setText({ ...text, [name]: '' });
+    setText({ ...text, [name]: ' ' });
   };
 
   const onChangeText = (e) => {
@@ -30,27 +28,48 @@ const Result = () => {
       content: '부제목을 입력하세요',
       author: '글쓴이를 입력하세요',
     });
+    setColor('#ffffff')
   };
 
   const randomArr = [
     'FAD836',
     'F58553',
     'F27998',
-    'ES7C86',
+    'E57C86',
     '6991C7',
     '57CAF4',
     '64C3A8',
     'D3DF3E',
     'D2DDCF',
+    'FFFFFF',
   ];
   const ChangeColor = () => {
-    const randomColor = `#${randomArr[Math.floor(Math.random() * randomArr.length)]}`;
+    const randomColor = `#${
+      randomArr[Math.floor(Math.random() * randomArr.length)]
+    }`;
     setColor(randomColor);
   };
+  const clickSave = () => {};
 
   return (
-    <>
-      <Box className='box' bgColor={color}>
+    <OutBox
+      style={{
+        position: 'absolute',
+        left: '50%',
+        top: '50%',
+        transform: 'translate(-50%, -50%)',
+        backgroundColor: 'white',
+        padding: '3em',
+      }}
+    >
+      <Text
+        style={{
+          fontSize: '4.5em',
+        }}
+      >
+        정방형 썸네일 만들기
+      </Text>
+      <InBox className='box' bgColor={color}>
         <Text
           style={{
             fontSize: '4.5em',
@@ -75,50 +94,58 @@ const Result = () => {
         >
           {author}
         </Text>
-      </Box>
+      </InBox>
       <Wrapper>
-        <form>
-          <Input
-            name='title'
-            value={title}
-            onChange={onChangeText}
-            placeholder='TitleHere'
-          />
-          <Input
-            name='content'
-            value={content}
-            onChange={onChangeText}
-            placeholder='ContentHere'
-          />
-          <Input
-            name='author'
-            value={author}
-            onChange={onChangeText}
-            placeholder='Author Here'
-          />
-          <Button onClick={ChangeColor}>랜덤 색상</Button>
-          <Button type='reset' onClick={resetText}>
-            다시 시작
-          </Button>
-        </form>
+        <Input
+          name='title'
+          value={title}
+          onChange={onChangeText}
+          placeholder='TitleHere'
+          onDoubleClick={clear}
+        />
+        <Input
+          name='content'
+          value={content}
+          onChange={onChangeText}
+          onClick={clear}
+          placeholder='ContentHere'
+          onDoubleClick={clear}
+        />
+        <Input
+          name='author'
+          value={author}
+          onChange={onChangeText}
+          placeholder='Author Here'
+          onDoubleClick={clear}
+        />
+        <Button onClick={ChangeColor}>랜덤 색상</Button>
+        <Button onClick={clickSave}>저장</Button>
+        <Button type='reset' onClick={resetText}>
+          다시 시작
+        </Button>
       </Wrapper>
-    </>
+    </OutBox>
   );
 };
 
-const Box = styled.div`
+const OutBox = styled.div`
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 2em;
+`;
+
+const InBox = styled.div`
   margin: 0 auto;
   width: 800px;
   aspect-ratio: 1/1;
 
-  text-align: center;
-  font-family: 'Black Han Sans', sans-serif;
-
-  background-color: ${(props) => props.bgColor || 'skyblue'};
+  background-color: ${(props) => props.bgColor};
   border: 1px solid black;
 `;
 
-const Text = styled.p``;
+const Text = styled.p`
+  text-align: center;
+  font-family: 'Black Han Sans', sans-serif;
+`;
 
 const Wrapper = styled.div`
   display: flex;
