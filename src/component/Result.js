@@ -10,11 +10,6 @@ const Result = () => {
   const { title, content, author } = text;
 
   const clear = (e) => {
-    const { name, value } = e.target;
-    setText({ ...text, [name]: 'value' });
-  };
-
-  const resetText2 = (e) => {
     const { name } = e.target;
     setText({ ...text, [name]: '' });
   };
@@ -64,24 +59,22 @@ const Result = () => {
         <form>
           <Input
             name='title'
-            //value={title}
+            value={title}
             onChange={onChangeText}
             placeholder='TitleHere'
-            onClick={clear}
           />
           <Input
             name='content'
-            //value={content}
+            value={content}
             onChange={onChangeText}
             placeholder='ContentHere'
           />
           <Input
             name='author'
-            //value={author}
+            value={author}
             onChange={onChangeText}
             placeholder='Author Here'
           />
-          {/* <Button onClick={resetText}>Reset</Button> */}
           <Button type='reset' onClick={resetText}>Reset</Button>
         </form>
       </Wrapper>
@@ -104,13 +97,16 @@ const Box = styled.div`
 const Text = styled.p``;
 
 const Wrapper = styled.div`
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
   border: 1px solid skyblue;
   margin-top: 10px;
   padding: 10px;
 `;
 
 const Input = styled.input`
-  display: inline-block;
+  text-align: center;
   background-color: white;
   color: skyblue;
   font-size: 1em;
