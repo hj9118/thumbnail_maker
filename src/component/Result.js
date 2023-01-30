@@ -3,11 +3,21 @@ import styled from 'styled-components';
 
 const Result = () => {
   const [text, setText] = useState({
-    title: 'Title here',
-    content: 'Content here',
-    author: 'Author here',
+    title: 't',
+    content: 'c',
+    author: 'a',
   });
   const { title, content, author } = text;
+
+  const clear = (e) => {
+    const { name, value } = e.target;
+    setText({ ...text, [name]: 'value' });
+  };
+
+  const resetText2 = (e) => {
+    const { name } = e.target;
+    setText({ ...text, [name]: '' });
+  };
 
   const onChangeText = (e) => {
     const { name, value } = e.target;
@@ -51,25 +61,29 @@ const Result = () => {
         </Text>
       </Box>
       <Wrapper>
-        <Input
-          name='title'
-          value={title}
-          onChange={onChangeText}
-          placeholder='TitleHere'
-        />
-        <Input
-          name='content'
-          value={content}
-          onChange={onChangeText}
-          placeholder='ContentHere'
-        />
-        <Input
-          name='author'
-          value={author}
-          onChange={onChangeText}
-          placeholder='Author Here'
-        />
-        <Button onClick={resetText}>Reset</Button>
+        <form>
+          <Input
+            name='title'
+            //value={title}
+            onChange={onChangeText}
+            placeholder='TitleHere'
+            onClick={clear}
+          />
+          <Input
+            name='content'
+            //value={content}
+            onChange={onChangeText}
+            placeholder='ContentHere'
+          />
+          <Input
+            name='author'
+            //value={author}
+            onChange={onChangeText}
+            placeholder='Author Here'
+          />
+          {/* <Button onClick={resetText}>Reset</Button> */}
+          <Button type='reset' onClick={resetText}>Reset</Button>
+        </form>
       </Wrapper>
     </>
   );
