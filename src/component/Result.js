@@ -110,7 +110,6 @@ const Result = () => {
         <style.Button
           onClick={() =>
             exportComponentAsPNG(ref, {
-              scale: 3,
               fileName: 'thumbnail',
             })
           }
