@@ -105,7 +105,15 @@ const Result = () => {
           onDoubleClick={clear}
         />
         <style.Button onClick={ChangeColor}>랜덤 색상</style.Button>
-        <style.Button onClick={() => exportComponentAsPNG(ref)}>저장</style.Button>
+        <style.Button
+          onClick={() =>
+            exportComponentAsPNG(ref, {
+              fileName: 'thumbnail',
+            })
+          }
+        >
+          저장
+        </style.Button>
         <style.Button onClick={resetText}>다시 시작</style.Button>
       </style.Wrapper>
       <style.TipBox>
