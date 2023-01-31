@@ -63,4 +63,8 @@ margin: 1em;
 padding: 0.25em 1.5em;
 border: 2px solid skyblue;
 border-radius: 16px;
+
+&: hover {
+  cursor: pointer
+}
 `;

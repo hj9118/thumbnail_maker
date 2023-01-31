@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import * as style from './Styled';
+import { exportComponentAsPNG } from 'react-component-export-image';
 
 const Result = () => {
   const [text, setText] = useState({
@@ -47,7 +48,7 @@ const Result = () => {
     }`;
     setColor(randomColor);
   };
-  const clickSave = () => {};
+  const ref = useRef();
 
   return (
     <style.OutBox style={{}}>
@@ -58,7 +59,7 @@ const Result = () => {
       >
         정방형 썸네일 만들기
       </style.Text>
-      <style.InBox className='box' bgColor={color}>
+      <style.InBox className='box' bgColor={color} ref={ref}>
         <style.Text
           size='4.5em'
           style={{
@@ -104,7 +105,7 @@ const Result = () => {
           onDoubleClick={clear}
         />
         <style.Button onClick={ChangeColor}>랜덤 색상</style.Button>
-        <style.Button onClick={clickSave}>저장</style.Button>
+        <style.Button onClick={() => exportComponentAsPNG(ref)}>저장</style.Button>
         <style.Button onClick={resetText}>다시 시작</style.Button>
       </style.Wrapper>
       <style.TipBox>
