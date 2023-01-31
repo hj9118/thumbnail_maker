@@ -54,32 +54,32 @@ const Result = () => {
     <style.OutBox style={{}}>
       <style.Text
         style={{
-          fontSize: '4.5em',
+          fontSize: '3.5em',
         }}
       >
         정방형 썸네일 만들기
       </style.Text>
       <style.InBox className='box' bgColor={color} ref={ref}>
         <style.Text
-          size='4.5em'
+          size='3em'
           style={{
-            margin: '4em 0em 0em 0em',
+            margin: '2.75em 0em 0em 0em',
           }}
         >
           {title}
         </style.Text>
         <style.Text
-          size='2.5em'
+          size='2em'
           style={{
-            margin: '0.5em',
+            margin: '0.25em',
           }}
         >
           {content}
         </style.Text>
         <style.Text
-          size='1.5em'
+          size='1em'
           style={{
-            marginTop: '10em',
+            marginTop: '7em',
           }}
         >
           {author}
@@ -104,10 +104,13 @@ const Result = () => {
           onChange={onChangeText}
           onDoubleClick={clear}
         />
+      </style.Wrapper>
+      <style.Wrapper>
         <style.Button onClick={ChangeColor}>랜덤 색상</style.Button>
         <style.Button
           onClick={() =>
             exportComponentAsPNG(ref, {
+              scale: 3,
               fileName: 'thumbnail',
             })
           }
